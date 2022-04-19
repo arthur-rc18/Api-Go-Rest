@@ -6,6 +6,7 @@ import (
 
 	"github.com/arthur-rc18/Api-Go-Rest/controllers"
 	"github.com/arthur-rc18/Api-Go-Rest/middleware"
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 )
 
@@ -20,6 +21,7 @@ func HandleRequest() {
 	r.HandleFunc("/api/personalitys/{id}", controllers.ReturnPersonality).Methods("Get")    // The Get method will receive the data
 	r.HandleFunc("/api/personalitys", controllers.CreateNewPersonality).Methods("Post")     // The Post method will post the data
 	r.HandleFunc("/api/personalitys/{id}", controllers.DeletePersonality).Methods("Delete") // The Delete method will delete the specified data
-	r.HandleFunc("/api/personalitys/{id}", controllers.EditPersonality).Methods("Put")
-	log.Fatal(http.ListenAndServe(":8000", r))
+	r.HandleFunc("/api/personalitys/{id}", controllers.EditPersonality).Methods("Put")      // The Put method will change the data
+	// With this line, any outside code will be able to connect with the API-GO-REST project
+	log.Fatal(http.ListenAndServe(":8000", handlers.CORS(handlers.AllowedOrigins([]string{"*"}))(r)))
 }
