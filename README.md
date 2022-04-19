@@ -1,4 +1,4 @@
-##REST GO API
+## REST GO API
 
 This is a project of a REST API in GOLANG, connecting to a PostgreSql database.
 
@@ -16,10 +16,14 @@ After downloading, run in the terminal of the project:
 
     npm start
 
-*OBS: This will start the front-end
+*OBS: This will start the front-end*
 
 Now to run the GO code, just run:
 
     go run main.go
+
+After running both front and back, just run the **docker container** to access the **postgresql** database:
+
+    docker-compose up    
 
 If you want to change something in the API, after running the program in your machine, enter in **Postman** and just add the URL of the API, by that, you will be able to make any CRUD action.
